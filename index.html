@@ -17,4 +17,103 @@ layout: default
 
   <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p>
 
+  <form name="calculator" >
+<input type="textfield" name="ans" value="">
+<br>
+<input type="button" value="1" onClick="document.calculator.ans.value+='1'">
+<input type="button" value="2" onClick="document.calculator.ans.value+='2'">
+<input type="button" value="3" onClick="document.calculator.ans.value+='3'">
+<input type="button" value="+" onClick="document.calculator.ans.value+='+'">
+<br>
+<input type="button" value="4" onClick="document.calculator.ans.value+='4'">
+<input type="button" value="5" onClick="document.calculator.ans.value+='5'">
+<input type="button" value="6" onClick="document.calculator.ans.value+='6'">
+<input type="button" value="-" onClick="document.calculator.ans.value+='-'">
+<br>
+<input type="button" value="7" onClick="document.calculator.ans.value+='7'">
+<input type="button" value="8" onClick="document.calculator.ans.value+='8'">
+<input type="button" value="9" onClick="document.calculator.ans.value+='9'">
+<input type="button" value="*" onClick="document.calculator.ans.value+='*'">
+<input type="button" value="/" onClick="document.calculator.ans.value+='/'">
+<br>
+<input type="button" value="0" onClick="document.calculator.ans.value+='0'">
+<input type="reset" value="Reset">
+<input type="button" value="=" onClick="document.calculator.ans.value=eval(document.calculator.ans.value)">
+
+<br>
+<br>
+<input type="button" value="s" onClick="to_frames()">
+
+</form>
+
+
+<script>
+
+function to_frames()
+
+	{
+		var input_frames = document.calculator.ans.value;
+		
+		if (input_frames !=="")
+		{
+		
+		var _output_hours = ~~(input_frames / 90000);
+		
+		var hours_remainder = input_frames % 90000;
+		
+		var _output_minutes = ~~(hours_remainder / 1500);
+		
+		var output_minutes = make_two(_output_minutes);
+		
+		var output_hours = make_two(_output_hours);
+		
+		var minutes_remainder = hours_remainder % 1500;
+		
+		var _output_seconds = ~~(minutes_remainder / 25);
+		
+		var output_seconds = make_two(_output_seconds);
+		
+		var _output_frames = minutes_remainder % 25;
+
+		var output_frames = make_two(_output_frames);
+		
+		
+		var out_to_string = output_hours.toString() + ":" + output_minutes.toString() + ":" + output_seconds.toString() + ":" + output_frames.toString(); 
+		
+		alert(out_to_string);
+		
+		
+		
+		}
+		
+		function make_two(numb)
+			{
+			if (numb < 10)
+				{
+				
+				var backnumb = 0 + numb.toString();
+				
+				return backnumb;
+				
+				
+				}
+			
+			
+			return numb;
+			
+			
+			
+			}
+		
+		
+
+
+	}	
+
+
+</script>
+
+  
+  
+  
 </div>
